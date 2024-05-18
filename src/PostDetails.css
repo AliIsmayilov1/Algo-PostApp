@@ -1,0 +1,12 @@
+div.commentContainer{
+    margin-top: 16px;
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    padding: 16px;
+    background-color: rgb(228, 227, 227);
+    width: 100%;
+}
+div.commentContainer:hover{
+    background-color: lightgrey;
+}

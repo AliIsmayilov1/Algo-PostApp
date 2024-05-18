@@ -1,0 +1,12 @@
+a.posts{
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    padding: 16px;
+    background-color: rgb(228, 227, 227);
+    margin: 4px;
+    width: 100%;
+}
+a.posts:hover{
+    background-color: lightgrey;
+}

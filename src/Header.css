@@ -1,0 +1,23 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    padding: 8px;
+    border-bottom: 2px solid #ccc;
+}
+header>p{
+    user-select: none;
+    cursor: pointer;
+    letter-spacing: 4px;
+}
+header>i{
+    cursor: pointer;
+}
+
+
+@media (min-width:768px) {
+    header>i{
+        display: none !important;
+    }
+}

@@ -1,0 +1,11 @@
+footer {
+    text-align: center;
+    border-top: 2px solid #ccc;
+}
+
+footer>p>a {
+    text-decoration: none;
+    color: black;
+    font-style: italic;
+    font-weight: bold;
+}

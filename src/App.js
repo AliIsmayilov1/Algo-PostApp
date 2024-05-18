@@ -1,24 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Header from "./Header";
+import Footer from "./Footer";
+import Aside from "./Aside";
+import { useState } from "react";
+import Posts from "./Posts";
+import { BrowserRouter, Routes, Route, Form } from "react-router-dom";
+import PostDetails from "./PostDetails";
+import Users from "./Users";
+import UserPosts from "./UserPosts";
+import context from "./context";
 
 function App() {
+  let [isMenuCollapsed, setisMenuCollapsed] = useState(false);
+  let [postUsers, setPostUsers] = useState([]);
+  function ToggleMenu() {
+    setisMenuCollapsed(!isMenuCollapsed);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <context.Provider value={{
+        postUsers,
+        setPostUsers,
+      }}>
+        <div className="App">
+          <Header toggle={ToggleMenu}></Header>
+          <main className="container">
+            <Aside collapsed={isMenuCollapsed}></Aside>
+            <div className="routeHolder">
+              <Routes>
+                <Route path="/" element={<div>Home</div>}></Route>
+                <Route path="/posts" element={<Posts />}></Route>
+                <Route
+                  path="/posts/:id"
+                  element={<PostDetails></PostDetails>}
+                ></Route>
+                <Route
+                  path="/users/:id"
+                  element={<UserPosts></UserPosts>}
+                ></Route>
+                <Route path="*" element={<div>404 Page not found</div>}></Route>
+                <Route path="/users" element={<Users></Users>}></Route>
+              </Routes>
+            </div>
+          </main>
+          <Footer></Footer>
+        </div>
+      </context.Provider>
+    </BrowserRouter>
   );
 }
 
